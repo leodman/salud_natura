@@ -56,12 +56,32 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
   transition:transform .8s ease,opacity .5s ease;
   overflow:hidden;
 
+  /* Base cuero oscuro */
   background-color: #2a1505;
+
+  /* Capas de textura cuero: granulado + vetas + iluminación */
   background-image:
+    /* viñeta perimetral */
     radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%),
+    /* iluminación central suave */
     radial-gradient(ellipse at 48% 42%, rgba(120,70,20,.35) 0%, transparent 65%),
-    repeating-linear-gradient(127deg, transparent, transparent 3px, rgba(0,0,0,.04) 3px, rgba(0,0,0,.04) 4px),
-    repeating-linear-gradient(43deg, transparent, transparent 2px, rgba(255,255,255,.015) 2px, rgba(255,255,255,.015) 3px),
+    /* veta diagonal cuero */
+    repeating-linear-gradient(
+      127deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,0,.04) 3px,
+      rgba(0,0,0,.04) 4px
+    ),
+    /* grano fino cuero */
+    repeating-linear-gradient(
+      43deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,.015) 2px,
+      rgba(255,255,255,.015) 3px
+    ),
+    /* color base cuero marrón */
     linear-gradient(160deg, #3d1f08 0%, #2a1505 40%, #1e0f02 70%, #2e1608 100%);
 
   box-shadow:
@@ -71,14 +91,18 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 }
 .cover.open{transform:rotateY(-180deg) translateX(-100%);opacity:0;pointer-events:none}
 
+/* Marco repujado exterior */
 .cover::before{
   content:'';
   position:absolute;inset:14px;
   border:2px solid rgba(180,130,30,.35);
   border-radius:3px;
-  box-shadow: inset 0 0 0 1px rgba(255,200,80,.08), 0 0 0 1px rgba(0,0,0,.4);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,200,80,.08),
+    0 0 0 1px rgba(0,0,0,.4);
   pointer-events:none;
 }
+/* Marco repujado interior */
 .cover::after{
   content:'';
   position:absolute;inset:20px;
@@ -93,6 +117,7 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
   position:relative;z-index:1;
 }
 
+/* Medallón del logo — aspecto bronce repujado */
 .cover-medallion{
   position:relative;
   width:130px;height:130px;
@@ -101,8 +126,12 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 .cover-medallion::before{
   content:'';
   position:absolute;inset:-6px;border-radius:50%;
-  background: radial-gradient(circle at 35% 30%, #e8c060 0%, #b5890a 40%, #7a5408 70%, #4a3005 100%);
-  box-shadow: 0 4px 14px rgba(0,0,0,.7), inset 0 2px 4px rgba(255,220,100,.3), inset 0 -2px 4px rgba(0,0,0,.5);
+  background:
+    radial-gradient(circle at 35% 30%, #e8c060 0%, #b5890a 40%, #7a5408 70%, #4a3005 100%);
+  box-shadow:
+    0 4px 14px rgba(0,0,0,.7),
+    inset 0 2px 4px rgba(255,220,100,.3),
+    inset 0 -2px 4px rgba(0,0,0,.5);
 }
 .cover img{
   position:relative;z-index:1;
@@ -113,6 +142,7 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 }
 @keyframes sway{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.01) rotate(.5deg)}}
 
+/* Título repujado */
 .cover h1{
   font-family:'Cinzel',serif;
   font-size:1.55rem;letter-spacing:5px;line-height:1.4;
@@ -120,14 +150,18 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
   font-weight:700;
   color:#d4a012;
   text-shadow:
+    /* luz superior izquierda — brillo del relieve */
     -1px -2px 0 rgba(255,230,100,.55),
     -1px -1px 0 rgba(255,220,80,.3),
-     2px  3px 0 rgba(0,0,0,.95),
-     3px  4px 2px rgba(0,0,0,.8),
-     4px  5px 6px rgba(0,0,0,.6),
-     0 0 18px rgba(180,110,0,.2);
+    /* sombra inferior derecha — hundimiento */
+    2px  3px 0 rgba(0,0,0,.95),
+    3px  4px 2px rgba(0,0,0,.8),
+    4px  5px 6px rgba(0,0,0,.6),
+    /* halo cálido sutil */
+    0 0 18px rgba(180,110,0,.2);
 }
 
+/* Subtítulo repujado */
 .cover p{
   font-size:.72rem;letter-spacing:5px;text-transform:uppercase;
   margin-bottom:0;font-weight:600;
@@ -138,12 +172,14 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
      2px  3px 3px rgba(0,0,0,.7);
 }
 
+/* Separador dorado repujado */
 .cover-divider{
   width:70px;height:1px;margin:.9rem auto;
   background:linear-gradient(90deg,transparent,#b5890a,transparent);
   box-shadow:0 1px 0 rgba(0,0,0,.6), 0 -1px 0 rgba(255,200,60,.1);
 }
 
+/* Ornamentos de esquina (SVG inline) */
 .cover-corners{
   position:absolute;inset:24px;
   pointer-events:none;
@@ -157,6 +193,7 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 .cover-corner.bl{bottom:0;left:0;border-width:0 0 2px 2px;}
 .cover-corner.br{bottom:0;right:0;border-width:0 2px 2px 0;}
 
+/* Hint pulsante */
 .cover-hint{
   display:block;margin-top:.9rem;
   color:rgba(160,110,20,.6);font-size:.7rem;letter-spacing:3px;
@@ -165,9 +202,17 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 }
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:.9}}
 
+/* Lomo cuero */
 .cover-spine{
   position:absolute;left:0;top:0;bottom:0;width:30px;
-  background: linear-gradient(90deg, #1a0c02 0%, #3d1f08 20%, #5a3010 50%, #3d1f08 80%, #1a0c02 100%);
+  background:
+    linear-gradient(90deg,
+      #1a0c02 0%,
+      #3d1f08 20%,
+      #5a3010 50%,
+      #3d1f08 80%,
+      #1a0c02 100%
+    );
   border-radius:4px 0 0 4px;
   display:flex;align-items:center;justify-content:center;
   box-shadow:inset -3px 0 6px rgba(0,0,0,.5), inset 2px 0 4px rgba(255,180,60,.06);
@@ -188,11 +233,13 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 }
 .pages.visible{opacity:1;pointer-events:all}
 
+/* Lomo del libro abierto */
 .spine{
   width:24px;flex-shrink:0;
   background:linear-gradient(180deg,var(--dorado2),#7a5408,var(--dorado2));
 }
 
+/* Página izquierda (foto) */
 .page-left{
   flex:1;background:var(--crema);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -220,6 +267,7 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
   border-color:transparent transparent var(--crema2) transparent;
 }
 
+/* Página derecha (contenido) */
 .page-right{
   flex:1;background:var(--crema);
   display:flex;flex-direction:column;padding:1.5rem 1.8rem;
@@ -284,6 +332,7 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
   color:rgba(212,175,55,.5);text-transform:uppercase;
 }
 
+/* ── TRANSICIÓN DE PÁGINA ── */
 .page-flip{
   animation:flipPage .5s ease;
 }
@@ -298,27 +347,30 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 <body>
 
 <div class="topbar">
-  <a href="/" class="topbar-logo">
-    <img src="/static/img/logo.jpg" alt="Logo"/>
+  <a href="index.html" class="topbar-logo">
+    <img src="static/img/logo_animado.jpg" alt="Logo"/>
     <span>Salud Natura</span>
   </a>
-  <a href="/" class="btn-back">← Volver al inicio</a>
+  <a href="index.html" class="btn-back">← Volver al inicio</a>
 </div>
 
 <div class="scene">
   <div class="book-container">
 
+    <!-- PORTADA -->
     <div class="cover" id="cover" onclick="abrirLibro(0)">
       <div class="cover-spine"><span>GRIMORIO</span></div>
+      <!-- Ornamentos de esquina -->
       <div class="cover-corners">
         <div class="cover-corner tl"></div>
         <div class="cover-corner tr"></div>
         <div class="cover-corner bl"></div>
         <div class="cover-corner br"></div>
       </div>
+
       <div class="cover-inner">
         <div class="cover-medallion">
-          <img src="/static/img/logo.jpg" alt="Logo Salud Natura"/>
+          <img src="static/img/logo_animado.jpg" alt="Logo Salud Natura"/>
         </div>
         <div class="cover-divider"></div>
         <h1>Grimorio<br>Salud Natura</h1>
@@ -328,14 +380,19 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
       </div>
     </div>
 
+    <!-- PÁGINAS ABIERTAS -->
     <div class="pages" id="pages">
       <div class="spine"></div>
+
+      <!-- PÁGINA IZQUIERDA: FOTO -->
       <div class="page-left" id="pageLeft">
         <p class="lote-badge" id="loteBadge">Lote I</p>
         <img class="herb-photo" id="herbPhoto" src="" alt="Hierba"/>
         <span class="herb-num" id="herbNum">1 / 21</span>
         <div class="page-corner"></div>
       </div>
+
+      <!-- PÁGINA DERECHA: CONTENIDO -->
       <div class="page-right" id="pageRight">
         <h2 class="herb-name-es" id="herbName">—</h2>
         <p class="herb-name-lat" id="herbLat">—</p>
@@ -347,6 +404,7 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
       </div>
     </div>
 
+    <!-- NAVEGACIÓN -->
     <div class="nav-bar">
       <button class="nav-btn" id="btnPrev" onclick="cambiarHierba(-1)" disabled>◀</button>
       <div>
@@ -360,44 +418,181 @@ html,body{height:100%;font-family:'Lato',sans-serif;background:var(--verde);over
 </div>
 
 <script>
-const loteNames = ['Lote I','Lote II','Lote III','Lote IV','Lote V','Lote VI','Lote VII'];
-const loteDescs = ['Lote I · Hierbas suaves','Lote II · Hierbas energizantes','Lote III · Hierbas respiratorias','Lote IV · Hierbas reparadoras','Lote V · Hierbas depurativas','Lote VI · Hierbas femeninas','Lote VII · Hierbas del escudo'];
+const hierbas = [
+  {
+    nombre:"Manzanilla", lat:"Matricaria chamomilla",
+    lote:"Lote I", loteDesc:"Lote I · Hierbas suaves",
+    img:"static/img/manzanilla.jpg",
+    props:["Antiinflamatoria","Sedante suave","Digestiva","Antibacteriana","Antiespasmódica"],
+    usos:"Alivia insomnio y nerviosismo, calma cólicos y gastritis. Aplicada en piel reduce rojeces e irritaciones. En infusión es el remedio estrella para noches inquietas y malestares digestivos.",
+    nota:"La infusión debe reposar tapada 10 min para conservar sus aceites esenciales."
+  },
+  {
+    nombre:"Menta", lat:"Mentha × piperita",
+    lote:"Lote I", loteDesc:"Lote I · Hierbas suaves",
+    img:"static/img/menta.jpg",
+    props:["Digestiva","Analgésica","Refrescante","Antiespasmódica","Descongestionante"],
+    usos:"Reduce náuseas, flatulencias y espasmos intestinales. El mentol actúa sobre cefaleas tensionales aplicado en sienes. Inhalada despeja vías respiratorias en resfríos.",
+    nota:"Evitar en niños menores de 2 años. No usar aceite esencial puro sin diluir."
+  },
+  {
+    nombre:"Lavanda", lat:"Lavandula angustifolia",
+    lote:"Lote I", loteDesc:"Lote I · Hierbas suaves",
+    img:"static/img/lavanda.jpg",
+    props:["Ansiolítica","Sedante","Antifúngica","Cicatrizante","Analgésica"],
+    usos:"Reduce ansiedad e insomnio mediante aromaterapia o infusión. Aplicada en piel acelera cicatrización de quemaduras leves y heridas. Reconocida en medicina integrativa por su acción sobre el sistema nervioso.",
+    nota:"El aceite esencial de lavanda es uno de los pocos que puede aplicarse puro en pequeñas áreas."
+  },
+  {
+    nombre:"Romero", lat:"Salvia rosmarinus",
+    lote:"Lote II", loteDesc:"Lote II · Hierbas energizantes",
+    img:"static/img/romero.jpg",
+    props:["Estimulante circulatorio","Antioxidante","Antibacteriano","Hepatoprotector","Nootrópico suave"],
+    usos:"Mejora la memoria y concentración estimulando el flujo cerebral. En fricciones capilar combate la alopecia androgenética. Protege el hígado y activa la secreción biliar.",
+    nota:"Contraindicado en embarazo en dosis terapéuticas elevadas. No usar en epilepsia."
+  },
+  {
+    nombre:"Cúrcuma", lat:"Curcuma longa",
+    lote:"Lote II", loteDesc:"Lote II · Hierbas energizantes",
+    img:"static/img/curcuma.jpg",
+    props:["Antiinflamatoria potente","Antioxidante","Hepatoprotectora","Anticancerígena","Inmunomoduladora"],
+    usos:"La curcumina bloquea las mismas rutas inflamatorias que antiinflamatorios de síntesis. Indicada en artritis, enfermedades autoinmunes y protección hepática. Su biodisponibilidad aumenta 20× con pimienta negra.",
+    nota:"Absorción máxima combinada con pimienta negra (piperina) y grasas saludables."
+  },
+  {
+    nombre:"Jengibre", lat:"Zingiber officinale",
+    lote:"Lote II", loteDesc:"Lote II · Hierbas energizantes",
+    img:"static/img/jengibre.jpg",
+    props:["Antiemético","Antiinflamatorio","Termogénico","Digestivo","Circulatorio"],
+    usos:"Antiemético más estudiado en náuseas del embarazo y quimioterapia. Activa la circulación periférica y reduce dolor muscular postesfuerzo. Potencia el sistema inmune en procesos infecciosos.",
+    nota:"En personas con anticoagulantes, consultar al médico antes de usar en dosis altas."
+  },
+  {
+    nombre:"Eucalipto", lat:"Eucalyptus globulus",
+    lote:"Lote III", loteDesc:"Lote III · Hierbas respiratorias",
+    img:"static/img/eucalipto.jpg",
+    props:["Expectorante","Antiséptico","Broncodilatador","Antibacteriano","Febrífugo"],
+    usos:"El 1,8-cineol (eucaliptol) fluidifica el moco y dilata bronquios. Fundamental en gripe, bronquitis y sinusitis. En vaporizaciones libera las vías aéreas en minutos.",
+    nota:"No usar aceite esencial internamente. Evitar en niños menores de 6 años sin supervisión."
+  },
+  {
+    nombre:"Valeriana", lat:"Valeriana officinalis",
+    lote:"Lote III", loteDesc:"Lote III · Hierbas respiratorias",
+    img:"static/img/valeriana.jpg",
+    props:["Sedante","Ansiolítica","Antiespasmódica","Hipnótica","Miorelajante"],
+    usos:"Reduce la latencia de sueño sin generar dependencia. Ideal para insomnio de conciliación y ansiedad moderada. En contracturas musculares actúa como relajante natural.",
+    nota:"El efecto sedante se potencia con alcohol. Evitar conducir tras su consumo en dosis altas."
+  },
+  {
+    nombre:"Cola de Caballo", lat:"Equisetum arvense",
+    lote:"Lote III", loteDesc:"Lote III · Hierbas respiratorias",
+    img:"static/img/cola_caballo.jpg",
+    props:["Diurética","Remineralizante","Cicatrizante","Antiinflamatoria","Hemostática"],
+    usos:"Rica en sílice orgánico, refuerza huesos, uñas y cabello. Excelente diurético natural para retención de líquidos e infecciones urinarias. Favorece la regeneración de tejido conectivo.",
+    nota:"No usar en insuficiencia renal. Tomar con abundante agua. Máximo 6 semanas continuas."
+  },
+  {
+    nombre:"Caléndula", lat:"Calendula officinalis",
+    lote:"Lote IV", loteDesc:"Lote IV · Hierbas reparadoras",
+    img:"static/img/calendula.jpg",
+    props:["Cicatrizante","Antiinflamatoria","Antifúngica","Emoliente","Antibacteriana"],
+    usos:"Acelera la cicatrización de heridas, quemaduras y ulceraciones. Trata dermatitis atópica, eccemas y eritemas del pañal. En uso interno alivia gastritis y úlceras gástricas.",
+    nota:"Una de las plantas más seguras. Raramente produce dermatitis de contacto en alérgicos a asteráceas."
+  },
+  {
+    nombre:"Tomillo", lat:"Thymus vulgaris",
+    lote:"Lote IV", loteDesc:"Lote IV · Hierbas reparadoras",
+    img:"static/img/tomillo.jpg",
+    props:["Antibacteriano","Expectorante","Antifúngico","Antioxidante","Antiviral"],
+    usos:"El timol es uno de los antisépticos naturales más potentes. Trata tos, bronquitis y laringitis con eficacia comparable a algunos mucolíticos. Preserva alimentos por sus propiedades antimicrobianas.",
+    nota:"Rico en hierro y vitamina C. En dosis terapéuticas altas puede irritar la mucosa digestiva."
+  },
+  {
+    nombre:"Pasiflora", lat:"Passiflora incarnata",
+    lote:"Lote IV", loteDesc:"Lote IV · Hierbas reparadoras",
+    img:"static/img/pasiflora.jpg",
+    props:["Sedante","Ansiolítica","Antiespasmódica","Hipnótica","Analgésica"],
+    usos:"Actúa sobre los receptores GABA reduciendo ansiedad sin somnolencia excesiva. Muy eficaz en insomnio de mantenimiento (despertares nocturnos). Alivia palpitaciones de origen nervioso.",
+    nota:"Compatible con valeriana para potenciar el efecto. Evitar combinación con benzodiacepinas."
+  },
+  {
+    nombre:"Diente de León", lat:"Taraxacum officinale",
+    lote:"Lote V", loteDesc:"Lote V · Hierbas depurativas",
+    img:"static/img/diente_leon.jpg",
+    props:["Diurético","Depurativo","Digestivo","Hepatoprotector","Prebiótico"],
+    usos:"Estimula la producción de bilis y mejora la digestión de grasas. Depurativo hepático excepcional, rico en inulina (prebiótico). Las hojas son ricas en vitaminas A, C y K.",
+    nota:"El diente de león recoge contaminantes del suelo. Recolectar solo en zonas limpias."
+  },
+  {
+    nombre:"Boldo", lat:"Peumus boldus",
+    lote:"Lote V", loteDesc:"Lote V · Hierbas depurativas",
+    img:"static/img/boldo.jpg",
+    props:["Hepatoprotector","Colerético","Digestivo","Antioxidante","Laxante suave"],
+    usos:"La boldina estimula la secreción y expulsión de bilis, indicada en cálculos biliares y hígado perezoso. Endémico de Chile y Argentina, es el hepatoprotector más usado en Latinoamérica.",
+    nota:"Contraindicado en obstrucción de vías biliares. No usar más de 4 semanas seguidas."
+  },
+  {
+    nombre:"Ortiga", lat:"Urtica dioica",
+    lote:"Lote V", loteDesc:"Lote V · Hierbas depurativas",
+    img:"static/img/ortiga.jpg",
+    props:["Diurética","Antiinflamatoria","Remineralizante","Depurativa","Antihistamínica"],
+    usos:"La cocción elimina el ácido úrico y es aliada en gota y artritis. Extraordinariamente nutritiva: hierro, calcio, magnesio, vitaminas A y C. Uso tópico en alopecia androgenética.",
+    nota:"Cocida o seca pierde el poder urticante. Las semillas son adaptógenas y energizantes."
+  },
+  {
+    nombre:"Salvia", lat:"Salvia officinalis",
+    lote:"Lote VI", loteDesc:"Lote VI · Hierbas femeninas",
+    img:"static/img/salvia.jpg",
+    props:["Antisudorífica","Antimicrobiana","Estrogénica leve","Digestiva","Neuroprotectora"],
+    usos:"La planta de la menopausia por excelencia: reduce sofocos y sudoración nocturna. Antiséptico oral potente en gingivitis y aftas. Estudios muestran mejora en memoria y Alzheimer leve.",
+    nota:"Evitar en embarazo y lactancia por su contenido en tujona. No superar 15 g/día de hoja seca."
+  },
+  {
+    nombre:"Anís Verde", lat:"Pimpinella anisum",
+    lote:"Lote VI", loteDesc:"Lote VI · Hierbas femeninas",
+    img:"static/img/anis.jpg",
+    props:["Carminativo","Espasmolítico","Expectorante","Galactagogo","Estrogénico suave"],
+    usos:"Alivia gases, meteorismo y cólicos intestinales. Estimula la producción de leche materna. En afecciones respiratorias actúa como expectorante suave que facilita la eliminación del moco.",
+    nota:"El aceite esencial (anetol) puede ser tóxico en dosis altas. Usar la planta en infusión es seguro."
+  },
+  {
+    nombre:"Melisa", lat:"Melissa officinalis",
+    lote:"Lote VI", loteDesc:"Lote VI · Hierbas femeninas",
+    img:"static/img/melisa.jpg",
+    props:["Ansiolítica","Antiviral","Digestiva","Sedante","Antiespasmódica"],
+    usos:"La planta del corazón tranquilo: combate ansiedad, taquicardias nerviosas y nerviosismo. Antiviral demostrado contra herpes labial (VHS-1). Excelente para digestión nerviosa y colon irritable.",
+    nota:"Combina perfecto con valeriana para el insomnio. Las hojas frescas conservan mejor el aroma."
+  },
+  {
+    nombre:"Equinácea", lat:"Echinacea purpurea",
+    lote:"Lote VII", loteDesc:"Lote VII · Hierbas del escudo",
+    img:"static/img/echinacea.jpg",
+    props:["Inmunoestimulante","Antiviral","Antibacteriana","Antiinflamatoria","Cicatrizante"],
+    usos:"Reduce duración e intensidad de resfríos e infecciones virales. Estimula la producción de glóbulos blancos y la actividad de macrófagos. Ideal en cambios de estación como preventivo.",
+    nota:"No usar más de 8 semanas continuas. No recomendada en enfermedades autoinmunes sin supervisión."
+  },
+  {
+    nombre:"Té Verde", lat:"Camellia sinensis",
+    lote:"Lote VII", loteDesc:"Lote VII · Hierbas del escudo",
+    img:"static/img/te_verde.jpg",
+    props:["Antioxidante potente","Termogénico","Cardioprotector","Neuroprotector","Anticancerígeno"],
+    usos:"Las catequinas (EGCG) neutralizan radicales libres con eficacia 100× superior a la vitamina C. Protege el corazón reduciendo LDL oxidado. La L-teanina produce calma y enfoque sin excitación.",
+    nota:"Contiene cafeína. Evitar en embarazo, hipertiroidismo y problemas de sueño en dosis altas."
+  },
+  {
+    nombre:"Ginkgo Biloba", lat:"Ginkgo biloba",
+    lote:"Lote VII", loteDesc:"Lote VII · Hierbas del escudo",
+    img:"static/img/ginkgo.jpg",
+    props:["Vasodilatador","Antioxidante","Neuroprotector","Anticoagulante suave","Nootrópico"],
+    usos:"Mejora la microcirculación cerebral, aliviando tinnitus y mareos. Estudios muestran mejora en memoria y deterioro cognitivo leve. El árbol más antiguo del mundo: 270 millones de años de historia medicinal.",
+    nota:"Interacción con anticoagulantes (warfarina, aspirina). Consultar al médico si se toman medicamentos."
+  }
+];
 
-function nombreToImg(nombre) {
-  return '/static/img/' + nombre.toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g,'')
-    .replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'') + '.jpg';
-}
-
-let hierbas = [];
 let current = 0;
 let abierto = false;
 
-async function cargarHierbas() {
-  const resp = await fetch('/api/remedios');
-  const json = await resp.json();
-  hierbas = json.data.map((r, i) => {
-    const loteIdx = Math.floor(i / 3);
-    return {
-      nombre: r.nombre_remedio,
-      lat: r.planta_base || '',
-      lote: loteNames[loteIdx] || loteNames[loteNames.length-1],
-      loteDesc: loteDescs[loteIdx] || loteDescs[loteDescs.length-1],
-      img: nombreToImg(r.nombre_remedio),
-      props: (r.propiedades || '').split(',').map(p => p.trim()).filter(Boolean),
-      usos: r.dosificacion || '',
-      nota: r.contraindicaciones || ''
-    };
-  });
-
-  const paramH = parseInt(new URLSearchParams(window.location.search).get('h'));
-  if (!isNaN(paramH) && paramH >= 0 && paramH < hierbas.length) {
-    abrirLibro(paramH);
-  }
-}
-
 function abrirLibro(idx=0){
-  if (hierbas.length === 0) return;
   document.getElementById('cover').classList.add('open');
   document.getElementById('pages').classList.add('visible');
   abierto = true;
@@ -405,33 +600,56 @@ function abrirLibro(idx=0){
   renderHierba(idx);
 }
 
+// Si viene con ?h=N desde el index, abrir directo en esa hierba
+const paramH = parseInt(new URLSearchParams(window.location.search).get('h'));
+if (!isNaN(paramH) && paramH >= 0 && paramH < hierbas.length) {
+  window.addEventListener('DOMContentLoaded', () => abrirLibro(paramH));
+}
+
 function renderHierba(idx, dir=0){
   const h = hierbas[idx];
-  const total = hierbas.length;
   const left = document.getElementById('pageLeft');
   const right = document.getElementById('pageRight');
+
+  // Animación flip
   if(dir !== 0){
     left.classList.add('page-flip');
     right.classList.add('page-flip');
     setTimeout(()=>{left.classList.remove('page-flip');right.classList.remove('page-flip')},500);
   }
+
+  // Lote badge
   document.getElementById('loteBadge').textContent = h.lote;
-  document.getElementById('herbNum').textContent = (idx+1)+' / '+total;
+  document.getElementById('herbNum').textContent = (idx+1)+' / 21';
+
+  // Foto local
   const img = document.getElementById('herbPhoto');
   img.classList.add('loading');
   img.onload = () => img.classList.remove('loading');
   img.onerror = () => img.classList.remove('loading');
   img.src = h.img;
+
+  // Nombre
   document.getElementById('herbName').textContent = h.nombre;
   document.getElementById('herbLat').textContent = h.lat;
+
+  // Propiedades
   const ul = document.getElementById('herbProps');
   ul.innerHTML = h.props.map(p=>`<li>${p}</li>`).join('');
+
+  // Usos
   document.getElementById('herbUsos').textContent = h.usos;
-  document.getElementById('herbNota').textContent = h.nota ? '⚕ ' + h.nota : '';
-  document.getElementById('navCounter').textContent = (idx+1)+' / '+total;
+
+  // Nota
+  document.getElementById('herbNota').textContent = '⚕ ' + h.nota;
+
+  // Indicador
+  document.getElementById('navCounter').textContent = (idx+1)+' / 21';
   document.getElementById('loteIndicator').textContent = h.loteDesc;
+
+  // Botones
   document.getElementById('btnPrev').disabled = idx === 0;
-  document.getElementById('btnNext').disabled = idx === total-1;
+  document.getElementById('btnNext').disabled = idx === hierbas.length-1;
 }
 
 function cambiarHierba(dir){
@@ -441,13 +659,12 @@ function cambiarHierba(dir){
   renderHierba(current, dir);
 }
 
+// Teclas de dirección
 document.addEventListener('keydown', e=>{
   if(!abierto) return;
   if(e.key==='ArrowRight') cambiarHierba(1);
   if(e.key==='ArrowLeft') cambiarHierba(-1);
 });
-
-cargarHierbas();
 </script>
 </body>
 </html>
