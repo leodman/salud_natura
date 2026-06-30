@@ -393,6 +393,7 @@
             <div class="bq-prep">${r.preparacion}</div>
             <div class="bq-nota">${r.nota}</div>
             <button class="bq-ficha-btn" onclick="abrirFicha(${i})">Ver ficha completa</button>
+            ${r.grimorio_idx !== null && r.grimorio_idx !== undefined ? `<a class="bq-ficha-btn" href="/grimorio?h=${r.grimorio_idx}" style="margin-left:.5rem;text-decoration:none">🌿 Ver en Grimorio</a>` : ''}
           </div>
         </div>`;
       grid.appendChild(el);

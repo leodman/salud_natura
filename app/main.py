@@ -65,7 +65,15 @@ async def listar_remedios():
 @app.get("/api/botiquin")
 async def listar_botiquin():
     conn = get_db()
-    rows = [dict(r) for r in conn.execute("SELECT * FROM botiquin ORDER BY id").fetchall()]
+    # Calcular índice del grimorio (posición 0-based en lista ordenada por id_remedio)
+    idx_map = {r[0]: i for i, r in enumerate(
+        conn.execute("SELECT id_remedio FROM base_conocimiento_salud ORDER BY id_remedio").fetchall()
+    )}
+    rows = []
+    for r in conn.execute("SELECT * FROM botiquin ORDER BY id").fetchall():
+        item = dict(r)
+        item["grimorio_idx"] = idx_map.get(item.get("id_remedio"), None)
+        rows.append(item)
     conn.close()
     return {"ok": True, "data": rows}
 
